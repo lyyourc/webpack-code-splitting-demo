@@ -6,6 +6,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   entry: {
     app: './src/main.js',
+    vendor: [ 'vue', 'axios' ],
   },
   output: {
     path: path.resolve(__dirname, './dist'),
