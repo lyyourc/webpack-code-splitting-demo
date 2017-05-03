@@ -1,15 +1,17 @@
 <template>
 <div id="app">
-  <emoji></emoji>
+  <navbar></navbar>
+  <router-view class="main"></router-view>
 </div>
 </template>
 
 <script>
-import Emoji from './pages/Emoji.vue'
+import Navbar from './components/Navbar.vue'
+
 
 export default {
   name: 'app',
-  components: { Emoji },
+  components: { Navbar },
 }
 </script>
 
@@ -29,5 +31,9 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.main {
+  flex: 1;
 }
 </style>
