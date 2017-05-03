@@ -1,8 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Emoji from './pages/Emoji.vue' 
-import Photos from './pages/photos.vue' 
+const Emoji = () => import(
+  /* webpackChunkName: "Emoji" */
+  './pages/Emoji.vue')
+
+const Photos = () => import(
+  /* webpackChunkName: "Photos" */
+  './pages/Photos.vue')
 
 
 Vue.use(VueRouter)

@@ -6,5 +6,6 @@
         "browsers": ["last 2 versions"]
       }
     }]
-  ]
+  ],
+  "plugins": ["syntax-dynamic-import"]
 }
