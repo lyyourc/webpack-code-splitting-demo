@@ -65,6 +65,10 @@ if (process.env.NODE_ENV === 'production') {
   module.exports.plugins = (module.exports.plugins || []).concat([
     new BundleAnalyzerPlugin(),
 
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+    }),
+
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"'
