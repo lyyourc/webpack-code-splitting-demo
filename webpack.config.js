@@ -1,12 +1,16 @@
 var path = require('path')
 var webpack = require('webpack')
+var { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: './src/main.js',
+  entry: {
+    app: './src/main.js',
+  },
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
-    filename: 'build.js'
+    // publicPath: '/dist/',
+    filename: '[name].js'
   },
   module: {
     rules: [
@@ -45,13 +49,21 @@ module.exports = {
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map'
+  devtool: '#eval-source-map',
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './index.html',
+    }),
+  ],
 }
 
 if (process.env.NODE_ENV === 'production') {
   module.exports.devtool = '#source-map'
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
+    new BundleAnalyzerPlugin(),
+
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"'
