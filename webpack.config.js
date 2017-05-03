@@ -83,6 +83,13 @@ if (process.env.NODE_ENV === 'production') {
       ),
     }),
 
+    new webpack.optimize.CommonsChunkPlugin({
+      async: 'used-twice',
+      minChunks: (module, count) => (
+        count >= 2
+      ),
+    }),
+
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"'
