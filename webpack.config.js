@@ -6,7 +6,6 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   entry: {
     app: './src/main.js',
-    vendor: [ 'vue', 'axios' ],
   },
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -67,6 +66,11 @@ if (process.env.NODE_ENV === 'production') {
 
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
+      minChunks: ({ resource }) => (
+        resource &&
+        resource.indexOf('node_modules') >= 0 &&
+        resource.match(/\.js$/)
+      ),
     }),
 
     new webpack.DefinePlugin({
