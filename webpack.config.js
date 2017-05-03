@@ -74,6 +74,15 @@ if (process.env.NODE_ENV === 'production') {
       ),
     }),
 
+    new webpack.optimize.CommonsChunkPlugin({
+      async: 'common-in-lazy',
+      minChunks: ({ resource } = {}) => (
+        resource &&
+        resource.includes('node_modules') &&
+        /axios/.test(resource)
+      ),
+    }),
+
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"'
