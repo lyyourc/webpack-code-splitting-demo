@@ -10,8 +10,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     // publicPath: '/dist/',
-    filename: '[name].js',
-    chunkFilename: '[name].chunk.js',
+    filename: '[name].[chunkhash:8].js',
+    chunkFilename: '[name].[chunkhash:8].chunk.js',
   },
   module: {
     rules: [
@@ -63,7 +63,7 @@ if (process.env.NODE_ENV === 'production') {
   module.exports.devtool = '#source-map'
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
 
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
@@ -96,7 +96,7 @@ if (process.env.NODE_ENV === 'production') {
       }
     }),
     new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
+      sourceMap: false,
       compress: {
         warnings: false
       }
