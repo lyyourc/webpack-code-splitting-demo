@@ -64,6 +64,7 @@ if (process.env.NODE_ENV === 'production') {
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
     // new BundleAnalyzerPlugin(),
+    new webpack.HashedModuleIdsPlugin(),
 
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',

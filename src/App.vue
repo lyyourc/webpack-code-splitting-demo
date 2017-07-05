@@ -8,7 +8,6 @@
 
 <script>
 import Navbar from './components/Navbar.vue'
-import noop from './shared/utils.js'
 
 export default {
   name: 'app',
