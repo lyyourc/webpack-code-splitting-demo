@@ -74,6 +74,10 @@ if (process.env.NODE_ENV === 'production') {
       ),
     }),
 
+    new webpack.optimize.CommonsChunkPlugin({ 
+      name: ['manifast'] 
+    }),
+
     new webpack.optimize.CommonsChunkPlugin({
       async: 'common-in-lazy',
       minChunks: ({ resource } = {}) => (

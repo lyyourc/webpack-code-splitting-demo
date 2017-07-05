@@ -2,7 +2,6 @@
 <div id="app">
   <navbar></navbar>
   <router-view class="main"></router-view>
-  <footer> A Footer </footer>
 </div>
 </template>
 
